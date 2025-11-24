@@ -16,7 +16,7 @@ body {
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    #question {
+    .question {
       font-size: 20px;
       margin-bottom: 15px;
     }
@@ -35,7 +35,7 @@ body {
       background: #d1d1d1;
     }
 
-    #scoreBox {
+    .scoreBox {
       margin-top: 15px;
       font-size: 18px;
       display: flex;
@@ -45,7 +45,7 @@ body {
 
     }
 
-    #newGame {
+    .newGame {
       margin-top: 20px;
       padding: 10px 15px;
       background: #007bff;
