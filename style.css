@@ -47,3 +47,51 @@ body {
   cursor: pointer;
   font-size: 18px;
 }
+
+.quiz-box {
+  width: 420px;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+#question {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.option {
+  background: var(--option-bg);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: 0.2s;
+  pointer-events: auto;
+}
+
+.option:hover {
+  background: var(--option-hover);
+}
+
+#scoreBox {
+  margin-top: 15px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+#newGame {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: none;
+}

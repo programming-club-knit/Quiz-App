@@ -50,6 +50,8 @@ function fetchQuestions() {
         questions = data.results.map(q => formatQuestion(q));
         index = 0;
         score = 0;
+        // start the quiz by loading the first question
+        loadQuestion();
     })
     .catch(() => {
         questionEl.textContent = "Failed to load questions. Try again.";
@@ -58,13 +60,14 @@ function fetchQuestions() {
 
 function formatQuestion(q) {
     const options = [...q.incorrect_answers];
-    const correctPosition = Math.floor(Math.random() * 5);
+    // Insert the correct answer at a random position between 0 and options.length (inclusive)
+    const correctPosition = Math.floor(Math.random() * (options.length + 1));
     options.splice(correctPosition, 0, q.correct_answer);
 
     return {
-    question: q.question,
-    options: options,
-    answer: correctPosition
+        question: q.question,
+        options: options,
+        answer: correctPosition
     };
 }
 
@@ -96,7 +99,7 @@ function checkAnswer(selected, selectedDiv) {
     } 
     else {
         selectedDiv.style.background = "#f44336";
-        optionsEl.children[correct].style.background = "#4caf50";
+        if (optionsEl.children[correct]) optionsEl.children[correct].style.background = "#4caf50";
     }
 
     setTimeout(() => {
