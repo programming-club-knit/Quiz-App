@@ -2,6 +2,38 @@ let questions = [];
 let index = 0;
 let score = 0;
 
+// === Theme toggle (persists to localStorage) ===
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+function setTheme(theme){
+    if(theme === 'dark'){
+        document.documentElement.setAttribute('data-theme','dark');
+        if(themeToggleBtn) themeToggleBtn.textContent = '☀️';
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        if(themeToggleBtn) themeToggleBtn.textContent = '🌙';
+    }
+}
+
+function toggleTheme(){
+    const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+}
+
+function initTheme(){
+    try{
+        const stored = localStorage.getItem('theme');
+        if(stored) setTheme(stored);
+        else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+        else setTheme('light');
+    }catch(e){ setTheme('light'); }
+    if(themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+initTheme();
+
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const scoreBox = document.getElementById("scoreBox");
